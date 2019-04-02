@@ -1,7 +1,7 @@
-from constants import *
-from imports import *
-from utils import *
-from preprocessing import *
+from src.constants import *
+from src.imports import *
+from src.utils import *
+from src.preprocessing import *
 
 # arch = densenet169                  # specify model architecture, densenet169 seems to perform well for this data but you could experiment
 # BATCH_SIZE = 128                    # specify batch size, hardware restrics this one. Large batch sizes may run out of GPU memory
