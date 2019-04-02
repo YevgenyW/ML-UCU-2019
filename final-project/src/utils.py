@@ -9,6 +9,23 @@ def readImage(path):
     rgb_img = cv2.merge([r,g,b])
     return rgb_img
 
+def read_rgb_layers(path):
+    bgr_img = cv2.imread(path)
+    b, g, r = cv2.split(bgr_img)
+    return [r, g, b]
+
+def read_rgb_image(path):
+    return cv2.merge(read_rgb_layers(path)) / 255
+
+def read_rgb_n_crop(path, crop_size):
+    img = read_rgb_image(path)
+    original_size = img.shape[0]
+    if crop_size > original_size or crop_size < 1:
+        return img
+    else:
+        start = (original_size - crop_size) // 2
+        end = start + crop_size
+        return img[start:end, start:end]
 
 def printRandomImages(data):
 
