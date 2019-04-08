@@ -1,0 +1,77 @@
+1. Message: "We've done a good job"
+----------------------------------
+Audience:
+1) knows about the subject:
+	- topic exists, general approaches to CV, proved actuality
+2) questions:
+	why this solution?
+	how our results compared with other?
+	accuracy in comparison with human
+	your contribution
+	what you have learnt
+	what conclusions can you make
+	can the model work without a doctor
+3) biases (предубеждения);
+	a lot of exiting solutions (hot theme)
+	nothing new here
+	project have been implemented in the last few days
+
+----------------------------------
+Audience:
+1) Know
+	answers on the questions
+2) Feel
+	make a good job
+3) Do
+	good grade
+	respect
+	reference
+
+----------------------------------
+Preparation:
+book lecture room
+camera
+slides
+report for Tanya
+
+----------------------------------
+Main part
+1. What we started with
+2. How we improved it
+3. How good our results in comparison with other competitors
+
+----------------------------------
+Introduction:
+Show cells with cancer and without - first slide
+Three "hot theme": 
+- cancer cell detection
+- computer vision
+- kaggle
+
+----------------------------------
+Conclusion:
+Show pictures from the introduction with appropriate rectangles
+show accuracy of the model
+show the most impressive things that help to improve accuracy (augmentation, model, etc) in comparison with basic model
+
+
+presentation skills:
+- posture
+- eye contact
+- movement
+- gestures
+- voice
+
+
+
+
+
+
+
+
+
+
+
+
+
+
