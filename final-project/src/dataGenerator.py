@@ -28,6 +28,8 @@ class DataGenerator(keras.utils.Sequence):
         self.n_classes = n_classes
         self.shuffle = shuffle
         self.augmentation = augmentation
+        num = self.labels.shape[0] - (self.labels.shape[0] % batch_size)
+        self.classes = self.labels.iloc[:num].values
         if (self.augmentation == True):
             print("Data augmentation enabled")
 
@@ -169,5 +171,6 @@ class DataGenerator(keras.utils.Sequence):
         
         return seq.augment_images(images)
 
-
+    #def classes(self):
+     #   return self.labels.iloc[:].values
 
