@@ -44,12 +44,7 @@ class DataGenerator(keras.utils.Sequence):
         'Generate one batch of data'
         # Generate indexes of the batch
         indexes = self.indexes[index*self.batch_size:(index+1)*self.batch_size]
-        # print(type(indexes))
-        # print(indexes)
-        # Find list of IDs
-        # for k in indexes:
-        #     print(k)
-        #     print(self.list_IDs.iloc[k], self.list_IDs.shape)
+       
         list_IDs_temp = [self.list_IDs.iloc[k] for k in indexes]
         list_labels_temp = [self.labels.iloc[k] for k in indexes]
 
@@ -67,25 +62,24 @@ class DataGenerator(keras.utils.Sequence):
     def __data_generation(self, list_IDs_temp, list_labels_temp):
         'Generates data containing batch_size samples' # X : (n_samples, *dim, n_channels)
         # Initialization
+        
         X = np.empty((self.batch_size, *self.dim, self.n_channels), dtype=np.uint8)
         y = np.empty((self.batch_size), dtype=int)
-        # print(X.shape)
-        # print(y.shape)
         # Generate data
+
         for i, ID in enumerate(list_IDs_temp):
             # Store sample
             path = "data/train/" + ID + ".tif"
-            # print("path: ", path)
             X[i,] = readImage(path)
-             # np.load('data/' + ID + '.npy')
 
             # Store class
             y[i] = list_labels_temp[i]
 
         if (self.augmentation == True):
             X = self.augment(X)
-
-        return X / 255.0, keras.utils.to_categorical(y, num_classes=self.n_classes)
+        # y_out = keras.utils.to_categorical(y, num_classes=self.n_classes)
+    
+        return X / 255.0, y
 
     def augment(self, images, show = False):
         'Images augmentation'
