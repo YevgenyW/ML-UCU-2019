@@ -77,7 +77,7 @@ class DataGenerator(keras.utils.Sequence):
             X = self.augment(X)
         # y_out = keras.utils.to_categorical(y, num_classes=self.n_classes)
     
-        return X / 255.0, y
+        return X, y
 
     def augment(self, images, show = False):
         'Images augmentation'
