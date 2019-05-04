@@ -6,13 +6,11 @@ import cv2
 import imgaug as ia
 from imgaug import augmenters as iaa
 
-def readImage(path):
-    # OpenCV reads the image in bgr format by default
-    bgr_img = cv2.imread(path)
-    # We flip it to rgb for visualization purposes
-    b,g,r = cv2.split(bgr_img)
-    rgb_img = cv2.merge([r,g,b])
-    return rgb_img
+from tensorflow.keras.preprocessing.image import img_to_array as img_to_array
+from tensorflow.keras.preprocessing.image import load_img as load_img
+
+def readImage(path, target_size):
+    return img_to_array(load_img(path, target_size=target_size))/255.
 
 class DataGenerator(keras.utils.Sequence):
     'Generates data for Keras'
@@ -70,7 +68,7 @@ class DataGenerator(keras.utils.Sequence):
         for i, ID in enumerate(list_IDs_temp):
             # Store sample
             path = "data/train/" + ID + ".tif"
-            X[i,] = readImage(path)
+            X[i,] = readImage(path, self.dim)
 
             # Store class
             y[i] = list_labels_temp[i]
