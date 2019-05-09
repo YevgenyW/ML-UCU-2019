@@ -67,7 +67,7 @@ class DataGenerator(keras.utils.Sequence):
 
         for i, ID in enumerate(list_IDs_temp):
             # Store sample
-            path = "data/train/" + ID + ".tif"
+            path = "../data/train/" + ID + ".tif"
             X[i,] = readImage(path, self.dim)
 
             # Store class

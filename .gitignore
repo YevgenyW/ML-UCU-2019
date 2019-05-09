@@ -4,3 +4,8 @@ __pycache__
 *.pyc
 *.ini
 *.webarchive
+*.local
+final-project/interim report_Pozdniakov/
+HW2_supervised/Homework 02 - Supervised.docx
+HW2_supervised/programming/alexnet-cifar/output/
+HW3_variance_PCA_ICA/Homework 03 - Unsupervised.pdf
