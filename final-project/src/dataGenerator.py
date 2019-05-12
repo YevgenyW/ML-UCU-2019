@@ -9,8 +9,18 @@ from imgaug import augmenters as iaa
 def readImage(path):
     # OpenCV reads the image in bgr format by default
     bgr_img = cv2.imread(path)
+#     bgr_img_res = cv2.resize(bgr_img, (self.dim[0], self.dim[1]))
     # We flip it to rgb for visualization purposes
     b,g,r = cv2.split(bgr_img)
+    rgb_img = cv2.merge([r,g,b])
+    return rgb_img
+
+def readImageResized(path, size):
+    # OpenCV reads the image in bgr format by default
+    bgr_img = cv2.imread(path)
+    bgr_img_resized = cv2.resize(bgr_img, (size[0], size[1]))
+    # We flip it to rgb for visualization purposes
+    b,g,r = cv2.split(bgr_img_resized)
     rgb_img = cv2.merge([r,g,b])
     return rgb_img
 
@@ -70,7 +80,7 @@ class DataGenerator(keras.utils.Sequence):
         for i, ID in enumerate(list_IDs_temp):
             # Store sample
             path = "../data/train/" + ID + ".tif"
-            X[i,] = readImage(path)
+            X[i,] = readImageResized(path, self.dim)
 
             # Store class
             y[i] = list_labels_temp[i]
@@ -96,6 +106,7 @@ class DataGenerator(keras.utils.Sequence):
                 # apply the following augmenters to most images
                 iaa.Fliplr(0.5), # horizontally flip 50% of all images
                 iaa.Flipud(0.2), # vertically flip 20% of all images
+                iaa.Resize({"height": self.dim[0], "width": self.dim[1]}),
                 # crop images by -5% to 10% of their height/width
                 sometimes(iaa.CropAndPad(
                     percent=(-0.05, 0.1),
